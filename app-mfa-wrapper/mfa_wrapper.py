@@ -39,7 +39,7 @@ class VanillaMFAWrapper(ClamApp):
             annotation.add_feature("word", interval.mark)
 
         for contain in new_view.contains.keys():
-            mmif.contains.append({contain: new_view.id})
+            mmif.contains.update({contain: new_view.id})
         return mmif
 
     @staticmethod
