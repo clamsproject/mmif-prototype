@@ -29,14 +29,16 @@ class VanillaMFAWrapper(ClamApp):
         mfa_output = self.run_mfa(audio_filename, transcript_filename)
         # convert textgrid to a mmif view
         new_view = mmif.new_view()
-        new_view.new_contain(AnnotationTypes.FA)
+        contain = new_view.new_contain(AnnotationTypes.FA)
+        contain.producer = self.__class__
         tg = textgrid.TextGrid.fromFile(mfa_output)
         for int_id, interval in enumerate(tg.getFirst("words").intervals):
-            annotation = new_view.new_annotation(int_id)
-            annotation.start = str(interval.minTime)
-            annotation.end = str(interval.maxTime)
-            annotation.attype = AnnotationTypes.FA
-            annotation.add_feature("word", interval.mark)
+            if interval.mark != "":
+                annotation = new_view.new_annotation(int_id)
+                annotation.start = str(interval.minTime)
+                annotation.end = str(interval.maxTime)
+                annotation.attype = AnnotationTypes.FA
+                annotation.add_feature("word", interval.mark)
 
         for contain in new_view.contains.keys():
             mmif.contains.update({contain: new_view.id})
@@ -56,6 +58,4 @@ if __name__ == "__main__":
     mfa_tool = VanillaMFAWrapper()
     mfa_service = Restifier(mfa_tool)
     mfa_service.run()
-
-
 
