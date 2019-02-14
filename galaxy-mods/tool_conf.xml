@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<toolbox monitor="true">
+  <section id="getext" name="Get Data">
+    <tool file="data_source/upload.xml" />
+  </section>
+  <section id="send" name="Send Data">
+    <tool file="cloud/send.xml" />
+  </section>
+  <section id="video" name="Video Tools">
+      <tool file="videotools/bars.xml" />
+      <tool file="videotools/bottom_thirds.xml" />
+      <tool file="videotools/MMIF_wrapper.xml" />
+      <tool file="videotools/slate_detection.xml" />
+      <tool file="videotools/slate_OCR.xml" />
+      <tool file="videotools/EAST_Text_Detection.xml" />
+  </section>
+  <section id="audio" name="Audio Tools">
+  </section>
+  <section id="text" name="Text Tools">
+      <tool file="texttools/process_slate_text.xml" />
+      <tool file="texttools/HeidelTime.xml" />
+  </section>
+  <section id="Multimodal" name="Multimodal Tools">
+  </section>
+</toolbox>
