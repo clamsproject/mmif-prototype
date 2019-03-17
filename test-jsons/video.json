@@ -5,7 +5,10 @@
     {
       "id": "0",
       "type": "audio-video",
-      "location": "/var/archive/cpb-aacip-507-fj2988397d.mp4",
+      "location": "/Users/kelleylynch/data/wgbh/data/cpb-aacip-507-zw18k75v1r.mp4",
+
+      "location_tested": "/Users/kelleylynch/data/wgbh/data/cpb-aacip-398-913n6418.h264.mp4",
+      "location_tested": "/Users/kelleylynch/data/wgbh/data/cpb-aacip-507-ns0ks6jw2f.mp4",
       "metadata": {}
     }
   ],
