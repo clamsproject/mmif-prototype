@@ -1,3 +1,4 @@
+version: "3"
 services:
     a_tool:
         image: clams/tool_1
@@ -11,7 +12,7 @@ services:
         image: clams/clams-galaxy
         container_name: clamsgalaxy
         build: ./galaxy-mods
-        privilieged: true
+        privilieged: false
         ports:
             - 8080:80
         depends_on: 
