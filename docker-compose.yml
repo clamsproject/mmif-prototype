@@ -1,0 +1,20 @@
+services:
+    a_tool:
+        image: clams/tool_1
+        container_name: clamstool1
+        build: ./tool_1
+    more_tool:
+        image: clams/tool_2
+        container_name: clamstool2
+        build: ./tool_2
+    galaxy:
+        image: clams/clams-galaxy
+        container_name: clamsgalaxy
+        build: ./galaxy-mods
+        privilieged: true
+        ports:
+            - 8080:80
+        depends_on: 
+            - a_tool
+            - more_tool
+
