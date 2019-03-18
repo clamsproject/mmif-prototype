@@ -26,16 +26,17 @@ class SlateRecognition(ClamApp):
     def annotate(self, mmif_json):
         mmif = Mmif(mmif_json)
         video_filename = mmif.get_medium_location(MediaTypes.V)
-        slate_output = self.run_slaterecognition(video_filename, mmif_json) #slate_output is a list of (target, text)
-
+        slate_output = self.run_slaterecognition(video_filename, mmif) #slate_output is a list of (target, text)
+        #print (slate_output)
         new_view = mmif.new_view()
-        contain = new_view.new_contain(AnnotationTypes.SD)
-        contain.producer = self.__class__
+        contain = new_view.new_contain(AnnotationTypes.OCR)
+        contain.producer = str(self.__class__)
 
-        for int_id, (target, text) in enumerate(slate_output):
+        for int_id, res in enumerate(slate_output):
             annotation = new_view.new_annotation(int_id)
-            annotation.target = str(target)
-            annotation.features.characters = str(text)
+            annotation.target = str(res[0])
+            annotation.features = {}
+            annotation.features["characters"] = str(res[1])
             #annotation.feature = {'conf':confidence}
             annotation.attype = AnnotationTypes.OCR
 
@@ -49,9 +50,10 @@ class SlateRecognition(ClamApp):
         def get_slate_frame_range(in_mmif):
             frame_range_list = []
             view = in_mmif.get_view_contains(AnnotationTypes.SD)
-            for annotation in view:
-                frame_range_list.append((annotation.id, annotation.start, annotation.end))
-            return frame_range_list
+            view_id = view["id"]
+            for annotation in view["annotations"]:
+                frame_range_list.append((annotation["id"], annotation["start"], annotation["end"]))
+            return view_id, frame_range_list
 
         def process_image(f):
             proc = cv2.cvtColor(f, cv2.COLOR_BGR2GRAY)
@@ -64,15 +66,14 @@ class SlateRecognition(ClamApp):
             proc = process_image(f)
             return pytesseract.image_to_string(proc)
 
-        slate_frames = get_slate_frame_range(mmif)
-        slate_range = slate_frames[0]
-        target_frame = math.floor((slate_range[2]-slate_range[1])/2)
+        view_id, slate_frames = get_slate_frame_range(mmif)
+        slate_range = slate_frames[0] # right now just look at the first annotation (detected slate range)
+        target_frame = math.floor((int(slate_range[2])-int(slate_range[1]))/2) # take the middle frame
         cap = cv2.VideoCapture(video_filename)
-        cap.set(1, target_frame)
-        print (target_frame)
+        cap.set(1, target_frame) # jump to the middle frame
         ret, frame = cap.read()
-        res = read_frame(frame)
-        return ([slate_range[0],res])
+        res = read_frame(frame) # preprocess and apply tesseract
+        return  [(str(view_id)+":"+str(slate_range[0]),res)]
 
 
 
