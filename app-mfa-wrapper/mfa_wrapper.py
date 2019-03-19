@@ -29,8 +29,7 @@ class VanillaMFAWrapper(ClamApp):
         mfa_output = self.run_mfa(audio_filename, transcript_filename)
         # convert textgrid to a mmif view
         new_view = mmif.new_view()
-        contain = new_view.new_contain(AnnotationTypes.FA)
-        contain.producer = self.__class__
+        new_view.new_contain(AnnotationTypes.FA, self.__class__.__name__)
         tg = textgrid.TextGrid.fromFile(mfa_output)
         for int_id, interval in enumerate(tg.getFirst("words").intervals):
             if interval.mark != "":
