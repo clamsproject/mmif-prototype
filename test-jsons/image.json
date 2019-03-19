@@ -12,8 +12,6 @@
       }
     }
   ],
-  "contains": [
-  ],
-  "views": [
-  ]
+  "contains": {},
+  "views": []
 }

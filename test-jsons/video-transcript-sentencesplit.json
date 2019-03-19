@@ -15,11 +15,9 @@
       "metadata": {}
     }
   ],
-  "contains": [
-    {
-      "segment-sentences": "v_0"
-    }
-  ],
+  "contains": {
+    "segment-sentences": "v_0"
+  },
   "views": [
     {
       "id": "v_0",
