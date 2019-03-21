@@ -7,18 +7,19 @@
     <tool file="cloud/send.xml" />
   </section>
   <section id="video" name="Video Tools">
-      <tool file="videotools/bars.xml" />
-      <tool file="videotools/bottom_thirds.xml" />
-      <tool file="videotools/MMIF_wrapper.xml" />
-      <tool file="videotools/slate_detection.xml" />
-      <tool file="videotools/slate_OCR.xml" />
-      <tool file="videotools/EAST_Text_Detection.xml" />
+      <!-- <tool file="clams_videotools/bars.xml" /> -->
+      <!-- <tool file="clams_videotools/bottom_thirds.xml" /> -->
+      <!-- <tool file="clams_videotools/MMIF_wrapper.xml" /> -->
+      <!-- <tool file="clams_videotools/slate_detection.xml" /> -->
+      <!-- <tool file="clams_videotools/slate_OCR.xml" /> -->
+      <!-- <tool file="clams_videotools/EAST_Text_Detection.xml" /> -->
+      <tool file="clams_videotools/video_selector.xml" />
   </section>
   <section id="audio" name="Audio Tools">
   </section>
   <section id="text" name="Text Tools">
-      <tool file="texttools/process_slate_text.xml" />
-      <tool file="texttools/HeidelTime.xml" />
+      <!-- <tool file="clams_texttools/process_slate_text.xml" /> -->
+      <!-- <tool file="clams_texttools/HeidelTime.xml" /> -->
   </section>
   <section id="Multimodal" name="Multimodal Tools">
   </section>
