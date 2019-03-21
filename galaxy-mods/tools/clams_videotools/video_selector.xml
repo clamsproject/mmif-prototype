@@ -1,0 +1,31 @@
+<tool id="get.video" name="Video Selector" version="0.0.1">
+  <description>
+      Simple video selector
+  </description>
+  <command>
+      bash $__tool_directory__/select_video.sh $video_id $output
+  </command>
+  <inputs>
+    <param label="Select Video" name="video_id" type="select">
+      <options from_file="videodb.loc">
+        <column name="name" index="0" />
+        <column name="value" index="1" />
+      </options>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="txt" label="Selected Video (MMIF)" name="output">
+    </data>
+  </outputs>
+  <help>
+    <![CDATA[
+
+    **What it does**  
+
+    This tool is to select a video or a collection of video from a local archival storage to feed to computational analysis pipelines for metadata extraction. 
+
+    **License**
+
+    ]]>
+  </help>
+</tool>
