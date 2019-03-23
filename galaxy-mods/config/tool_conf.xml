@@ -2,6 +2,7 @@
 <toolbox monitor="true">
   <section id="getext" name="Get Data">
     <tool file="data_source/upload.xml" />
+    <tool file="clams_videotools/video_selector.xml" />
   </section>
   <section id="send" name="Send Data">
     <tool file="cloud/send.xml" />
@@ -13,7 +14,6 @@
       <!-- <tool file="clams_videotools/slate_detection.xml" /> -->
       <!-- <tool file="clams_videotools/slate_OCR.xml" /> -->
       <!-- <tool file="clams_videotools/EAST_Text_Detection.xml" /> -->
-      <tool file="clams_videotools/video_selector.xml" />
   </section>
   <section id="audio" name="Audio Tools">
   </section>
