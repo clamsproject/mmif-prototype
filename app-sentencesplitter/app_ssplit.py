@@ -36,7 +36,7 @@ class SentenceSplitter(ClamApp):
         sentences = nltk.tokenize.sent_tokenize(text)
 
         new_view = mmif.new_view()
-        new_view.new_contain(AnnotationTypes.Sentences)
+        new_view.new_contain(AnnotationTypes.Sentences, self.__class__.__name__)
         cur = 0
         for idx, sentence in enumerate(sentences):
             annotation = new_view.new_annotation(idx)

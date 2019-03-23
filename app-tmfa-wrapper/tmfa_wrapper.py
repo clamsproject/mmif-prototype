@@ -7,14 +7,14 @@ from clams.restify import Restifier
 import textgrid
 
 
-class VanillaMFAWrapper(ClamApp):
+class TokenizedMFAWrapper(ClamApp):
 
     def appmetadata(self):
-        # TODO (krim @ 10/7/2018): set up a proper tool metadata scheme
-        metadata = {"name": "Vanilla Montreal Forced Aligner",
-                    "description": "This tool wraps around Montreal Forced Aligner",
+        metadata = {"name": "Tokenized Montreal Forced Aligner",
+                    "description": "This tool wraps around Montreal Forced Aligner and align tokenized text input to audio input",
                     "vendor": "Team CLAMS",
-                    "requires": [MediaTypes.A, MediaTypes.T],
+                    # TODO implement hierarchical type checking
+                    "requires": [MediaTypes.A, MediaTypes.T, AnnotationTypes.Sentences],
                     "produces": [AnnotationTypes.FA]}
         return metadata
 
@@ -54,7 +54,9 @@ class VanillaMFAWrapper(ClamApp):
 
 
 if __name__ == "__main__":
-    mfa_tool = VanillaMFAWrapper()
-    mfa_service = Restifier(mfa_tool)
-    mfa_service.run()
+    tmfa_tool = TokenizedMFAWrapper()
+    tmfa_service = Restifier(tmfa_tool)
+    tmfa_service.run()
+
+
 
