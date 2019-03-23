@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<datatypes>
+    <registration converters_path="lib/galaxy/datatypes/converters" display_path="display_applications">
+        <datatype extension="txt" type="galaxy.datatypes.data:Text" display_in_upload="true" description="Any text file." description_url="https://wiki.galaxyproject.org/Learn/Datatypes#Plain_text">
+            <display file="test/txt.xml"/>
+        </datatype>
+    </registration>
+    <sniffers>
+    </sniffers>
+</datatypes>

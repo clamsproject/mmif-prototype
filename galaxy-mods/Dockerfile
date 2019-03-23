@@ -2,7 +2,8 @@ FROM bgruening/galaxy-stable:19.01
 
 WORKDIR /galaxy-central
 
-ADD config config/
-ADD tool-data tool-data/
-ADD tools tools
+COPY config config/
+COPY tool-data tool-data/
+COPY tools tools/
+COPY display_applications display_applications/
 
