@@ -1,0 +1,6 @@
+<display id="test_txt" version="1.0.0" name="display as external website">
+    <link id="main" name="main">
+        <url>http://morbius.cs-i.brandeis.edu:4000/display?file=${txt_file.qp}</url>
+        <param type="data" name="txt_file" url="galaxy.txt" />
+    </link>
+</display>
